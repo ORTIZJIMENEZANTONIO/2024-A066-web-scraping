@@ -1,5 +1,6 @@
 const express = require('express');
-const { scrapeImages } = require('./src/scraping/scraping');
+const { searchImages } = require('./src/scraping/scraping');
+const bodyParser = require('body-parser');
 const app = express();
 
 /* ROUTER IMPORT*/
@@ -13,10 +14,12 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use(bodyParser.json());
+
 app.get('/', (req, res) => res.json({ msg: 'Nothing to see here 💸' }));
 
 const scrapingRouter = express.Router();
-scrapingRouter.post('/imgaes', scrapeImages);
+scrapingRouter.post('/images', searchImages);
 
 app.use('/scraping', scrapingRouter);
 

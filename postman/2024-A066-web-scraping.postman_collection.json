@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "a948d1e5-5da1-48bb-b719-1273c9c63c36",
+		"name": "2024-A066-web-scraping",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6419147"
+	},
+	"item": [
+		{
+			"name": "getIndex",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{scraping}}",
+					"host": [
+						"{{scraping}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getImages",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"url\": \"https://www.amazon.com.mx/\",\n    \"search\": [\n        \"ALCATEL OneTouch\",\n        \"Apple iPhone 6\",\n        \"ASUS ZenFone 3\",\n        \"BLU Advance 5\",\n        \"BLU Studio X8\",\n        \"Huawei Nexus 6P\",\n        \"Moto G Plus\",\n        \"Samsung Galaxy A20\",\n        \"Samsung Galaxy J7\",\n        \"Samsung Galaxy S5\",\n        \"Samsung Galaxy S69\",\n        \"Xiaomi Redmi Note 9\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{scraping}}scraping/images",
+					"host": [
+						"{{scraping}}scraping"
+					],
+					"path": [
+						"images"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "scraping",
+			"value": "http://localhost:3001/"
+		}
+	]
+}
