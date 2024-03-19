@@ -13,11 +13,14 @@ const extractImagesFromURL = async (searchTerms, url) => {
 
       // Esperar a que se carguen las imágenes
       await page.waitForSelector('.s-image');
-
       // Extraer URLs de las imágenes
       const urls = await page.evaluate(() => {
+        //  document.querySelectorAll('.s-image'),
         const images = Array.from(document.querySelectorAll('.s-image'));
-        return images.map(img => img.src);
+
+        return images.map(img => {
+          return { description: img.alt, img: img.src };
+        });
       });
 
       // Agregar las URLs de las imágenes encontradas al array principal
